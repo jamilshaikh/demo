@@ -9,30 +9,8 @@ class maruti_suzuki extends CI_Controller {
 		$this -> load -> model('new_car_model', '', TRUE);
 		$this -> load -> model('blog_model', '', TRUE);
 	}
-	public function index()
-	{
-		redirect('maruti-suzuki/new-cars');
-	}
-	public function new_cars($type=null,$model=null) {
-		
-		
-		$data['contact_detail']=$this->contact_detail_model->contact_detail();
-		$query= $this -> new_car_model -> select_new_car($model);
-		$data['model']=$model;
-		$data['select_new_car'] =$query;
-		$data['title'] = "Buy Maruti Suzuki Car Online in Mumbai & Pune - Autovista";
-		$data['keyword'] = "buy new car, buy new car in mumbai, buy new car in pune, buy new car online,  book new car, new car price, buy maruti car, new car pics, car variants, car reviews";
-		$data['description'] = "Buy Maruti Suzuki cars online in Mumbai, Navi Mumbai & Pune at Autovista. Check Maruti Suzuki price, features, reviews, Specifications & images of these cars.";
-		$data["url"]= site_url()."maruti-suzuki/new-cars";
-		$this -> load -> view("include/header.php",$data);		
-		$this -> load -> view('new_car_main_view.php', $data);
-		$this -> load -> view('include/footer.php');
-	}
-	public function change_session() {
-		echo $location = $this -> input -> post('location');
-		$this->contact_detail_model->get_location_detail($location);
-		echo $this->session->userdata('location_url');
-	}
+	
+	
 	public function maruti_new_car($model_name=null,$variant_name=null,$location=NULL) {
 		$data['contact_detail']=$q=$this->contact_detail_model->contact_detail();	
 		$data['select_new_car_similar']=$this->new_car_model->select_new_car_similar();			
